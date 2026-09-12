@@ -1,0 +1,21 @@
+node_modules/
+dist/
+dist-server/
+.env*
+!.env.example
+.data/
+test-results/
+playwright-report/
+*.log
+*.zip
+.DS_Store
+
+# Local credentials, data and verification artifacts
+*.pem
+*.key
+*.sqlite*
+*.db
+*.dump
+*.tar.gz
+__pycache__/
+.venv/

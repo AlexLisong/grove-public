@@ -1,0 +1,8 @@
+{
+ "manifest_version":3,"name":"Grove Capture","version":"0.1.0","description":"Save selected ideas, articles, highlights and social posts to your private Grove workspace.",
+ "permissions":["storage","activeTab","scripting","contextMenus"],"optional_host_permissions":["https://*/*","http://localhost/*"],
+ "action":{"default_popup":"popup.html","default_title":"Save to Grove"},
+ "background":{"service_worker":"background.js","type":"module"},
+ "options_page":"options.html",
+ "commands":{"capture-page":{"suggested_key":{"default":"Alt+Shift+G"},"description":"Save the current page to Grove"}}
+}

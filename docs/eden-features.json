@@ -1,0 +1,1338 @@
+[
+  {
+    "id": "workspace.home",
+    "group": "Workspace",
+    "name": "Dashboard, navigation and command menu",
+    "acceptance_criteria": "Navigate Home, Library, Discover, Custom AI, Publish, Chats, boards and spaces; Cmd/Ctrl-K searches and creates items; pinned and recent items reopen correctly.",
+    "source": "https://eden.so/help/getting-started/welcome-to-eden/",
+    "dependencies": [
+      "DB"
+    ],
+    "evidence": "documented"
+  },
+  {
+    "id": "workspace.tenancy",
+    "group": "Workspace",
+    "name": "Isolated workspaces and membership",
+    "acceptance_criteria": "A user switches workspaces; boards, notes, chats, social accounts, connectors and tokens never leak between tenants; member access is checked on every API and shared item.",
+    "source": "https://eden.so/enterprise/",
+    "dependencies": [
+      "DB",
+      "AUTH"
+    ],
+    "evidence": "documented"
+  },
+  {
+    "id": "workspace.brand",
+    "group": "Workspace",
+    "name": "Multiple brands and pooled allowances",
+    "acceptance_criteria": "Separate brands have their own connected accounts, queue and schedules; multi-workspace plan pools credits, seats and social sets; changing brand changes scope everywhere.",
+    "source": "https://eden.so/help/scheduling/managing-brands/",
+    "dependencies": [
+      "DB",
+      "AUTH",
+      "BILLING"
+    ],
+    "evidence": "documented"
+  },
+  {
+    "id": "workspace.capture",
+    "group": "Workspace",
+    "name": "Quick capture",
+    "acceptance_criteria": "Cmd/Ctrl-K capture supports sticky card, markdown document, URL preview and multi-file uploads; chosen board is remembered; changing destination does not save; repeated capture and recent captures work.",
+    "source": "https://eden.so/help/getting-started/quick-capture/",
+    "dependencies": [
+      "DB",
+      "BLOB",
+      "INGEST"
+    ],
+    "evidence": "documented"
+  },
+  {
+    "id": "workspace.pinning",
+    "group": "Workspace",
+    "name": "Pinned items",
+    "acceptance_criteria": "Pin/unpin frequently used items and open from navigation; persistent per-user/workspace state.",
+    "source": "https://eden.so/help/library/pinning/",
+    "dependencies": [
+      "DB"
+    ],
+    "evidence": "documented"
+  },
+  {
+    "id": "workspace.onboarding",
+    "group": "Workspace",
+    "name": "Onboarding and topic preferences",
+    "acceptance_criteria": "Guided first board, own accounts, niche/topic pillars and workspace defaults persist and feed research views.",
+    "source": "https://eden.so/help/getting-started/the-complete-eden-walkthrough/",
+    "dependencies": [
+      "DB",
+      "AUTH"
+    ],
+    "evidence": "documented"
+  },
+  {
+    "id": "library.types",
+    "group": "Library",
+    "name": "Unified saved item library",
+    "acceptance_criteria": "Create and browse documents, sticky cards, links, PDFs, images, audio/video, EPUBs, saved social posts and highlights; item has stable identity independent of boards.",
+    "source": "https://eden.so/help/library/the-library/",
+    "dependencies": [
+      "DB",
+      "BLOB",
+      "INGEST"
+    ],
+    "evidence": "documented"
+  },
+  {
+    "id": "library.filters",
+    "group": "Library",
+    "name": "Type, source, tags and topic filters",
+    "acceptance_criteria": "Combinable filters narrow library by item type, source, platform, topic and tags; switching grid/list retains relevant state and opens selected item.",
+    "source": "https://eden.so/help/library/filtering-your-library/",
+    "dependencies": [
+      "DB"
+    ],
+    "evidence": "documented"
+  },
+  {
+    "id": "library.search",
+    "group": "Library",
+    "name": "Keyword and semantic search",
+    "acceptance_criteria": "Find exact text and conceptually related notes/highlights/PDFs/links/posts, with source links; queries cannot surface another tenant\u2019s private items.",
+    "source": "https://eden.so/help/library/searching-your-library/",
+    "dependencies": [
+      "DB",
+      "EMBEDDINGS"
+    ],
+    "evidence": "documented"
+  },
+  {
+    "id": "library.tags",
+    "group": "Library",
+    "name": "Workspace tags",
+    "acceptance_criteria": "Create, rename, recolor, assign, remove and filter shared workspace tags across supported item types.",
+    "source": "https://eden.so/help/library/tags/",
+    "dependencies": [
+      "DB"
+    ],
+    "evidence": "documented"
+  },
+  {
+    "id": "library.backlinks",
+    "group": "Library",
+    "name": "Connections and bidirectional links",
+    "acceptance_criteria": "Connect any two items; both show relationship; inline @ mentions create durable connections; deleting a view does not corrupt original item.",
+    "source": "https://eden.so/help/library/connecting-items/",
+    "dependencies": [
+      "DB"
+    ],
+    "evidence": "documented"
+  },
+  {
+    "id": "library.graph",
+    "group": "Library",
+    "name": "Graph view and entity hubs",
+    "acceptance_criteria": "Show item nodes linked through books, creators, boards and extracted entities; hub focus, zoom and type toggles work; new items enrich automatically.",
+    "source": "https://eden.so/help/library/the-graph-view/",
+    "dependencies": [
+      "DB",
+      "EMBEDDINGS",
+      "LLM"
+    ],
+    "evidence": "documented"
+  },
+  {
+    "id": "library.neural",
+    "group": "Library",
+    "name": "Neural relations while writing",
+    "acceptance_criteria": "Current paragraph returns semantically relevant owned items with debounce; excludes already mentioned items; per-type preference; inserting suggestion is explicit and links items.",
+    "source": "https://eden.so/help/library/neural-relations/",
+    "dependencies": [
+      "DB",
+      "EMBEDDINGS"
+    ],
+    "evidence": "documented"
+  },
+  {
+    "id": "library.sources",
+    "group": "Library",
+    "name": "Source assignment and enrichment",
+    "acceptance_criteria": "Saved items retain source URL, creator, title, date, platform and media metadata; source grouping survives board placement.",
+    "source": "https://eden.so/help/library/sources/",
+    "dependencies": [
+      "DB",
+      "INGEST"
+    ],
+    "evidence": "documented"
+  },
+  {
+    "id": "library.annotations",
+    "group": "Library",
+    "name": "Notes on saved items",
+    "acceptance_criteria": "Write and persist personal/workspace notes attached to original social/link/media item, independently of which board displays it.",
+    "source": "https://eden.so/help/library/notes-on-saved-items/",
+    "dependencies": [
+      "DB"
+    ],
+    "evidence": "documented"
+  },
+  {
+    "id": "library.rss",
+    "group": "Library",
+    "name": "RSS subscriptions",
+    "acceptance_criteria": "Add valid feed, ingest new entries, avoid duplicates, show source/feed filtering and unsubscribe without corrupting already saved work.",
+    "source": "https://eden.so/help/library/rss-feeds/",
+    "dependencies": [
+      "DB",
+      "INGEST",
+      "JOBS"
+    ],
+    "evidence": "documented"
+  },
+  {
+    "id": "library.import_notion",
+    "group": "Library",
+    "name": "Notion export import",
+    "acceptance_criteria": "Import supported Notion export archive into notes/library, preserve supported hierarchy, attachments and links; report unsupported entries.",
+    "source": "https://eden.so/help/library/import-notion/",
+    "dependencies": [
+      "DB",
+      "BLOB",
+      "IMPORT"
+    ],
+    "evidence": "documented"
+  },
+  {
+    "id": "library.import_obsidian",
+    "group": "Library",
+    "name": "Obsidian vault import",
+    "acceptance_criteria": "Import markdown vault and supported attachments/links without modifying originals.",
+    "source": "https://eden.so/help/library/import-obsidian/",
+    "dependencies": [
+      "DB",
+      "BLOB",
+      "IMPORT"
+    ],
+    "evidence": "documented"
+  },
+  {
+    "id": "library.import_evernote",
+    "group": "Library",
+    "name": "Evernote import",
+    "acceptance_criteria": "Import supported Evernote export notes and attachments with useful metadata; report failed entries.",
+    "source": "https://eden.so/help/library/import-evernote/",
+    "dependencies": [
+      "DB",
+      "BLOB",
+      "IMPORT"
+    ],
+    "evidence": "documented"
+  },
+  {
+    "id": "library.import_apple",
+    "group": "Library",
+    "name": "Apple Notes import",
+    "acceptance_criteria": "Accept documented Apple Notes export flow, ingest documents/media and report unsupported data.",
+    "source": "https://eden.so/help/library/import-apple-notes/",
+    "dependencies": [
+      "DB",
+      "BLOB",
+      "IMPORT"
+    ],
+    "evidence": "documented"
+  },
+  {
+    "id": "library.instagram_saves",
+    "group": "Library",
+    "name": "Instagram Saves and collection sync",
+    "acceptance_criteria": "Local extension/desktop signed-in session imports selected saves; collections become tags on first import; daily and manual sync, selection backfill and disconnect behavior; login/session stays on device.",
+    "source": "https://eden.so/help/library/connect-instagram-saves/",
+    "dependencies": [
+      "DB",
+      "INSTAGRAM_LOCAL",
+      "EXTENSION",
+      "JOBS"
+    ],
+    "evidence": "documented"
+  },
+  {
+    "id": "library.export",
+    "group": "Library",
+    "name": "Workspace export",
+    "acceptance_criteria": "Build asynchronous ZIP with markdown documents/cards, links.csv, source-grouped highlights and original uploads; progress, expiring download and skipped-files report; omit chats/layout/computed transcripts per documented behavior.",
+    "source": "https://eden.so/help/account/export-your-workspace/",
+    "dependencies": [
+      "DB",
+      "BLOB",
+      "JOBS",
+      "EMAIL"
+    ],
+    "evidence": "documented"
+  },
+  {
+    "id": "boards.views",
+    "group": "Boards",
+    "name": "Grid and freeform canvas",
+    "acceptance_criteria": "Create/rename/duplicate boards; switch views without losing items; grid sorting and canvas coordinates persist; same item can appear on multiple boards.",
+    "source": "https://eden.so/features/boards/",
+    "dependencies": [
+      "DB"
+    ],
+    "evidence": "documented"
+  },
+  {
+    "id": "boards.organize",
+    "group": "Boards",
+    "name": "Spaces and sections",
+    "acceptance_criteria": "One-level sidebar Spaces organize boards; sections segment a board; items can be added/moved and board sorting can use documented sort keys.",
+    "source": "https://eden.so/help/boards/boards-spaces-and-sections/",
+    "dependencies": [
+      "DB"
+    ],
+    "evidence": "documented"
+  },
+  {
+    "id": "boards.canvas",
+    "group": "Boards",
+    "name": "Canvas interaction",
+    "acceptance_criteria": "Pan via space/right-drag, zoom, fit view, select, move and resize items; copy-paste at cursor; duplicate and Alt-drag; axis lock; escape cancel; user-local undo/redo.",
+    "source": "https://eden.so/help/boards/working-fast-in-freeform/",
+    "dependencies": [
+      "DB"
+    ],
+    "evidence": "documented"
+  },
+  {
+    "id": "boards.drawing",
+    "group": "Boards",
+    "name": "Canvas drawing and pointers",
+    "acceptance_criteria": "Pen, eraser, rectangle, text, line and arrow tools persist marks; laser pointer fades without saving; tools stay selected until changed.",
+    "source": "https://eden.so/help/boards/working-fast-in-freeform/",
+    "dependencies": [
+      "DB"
+    ],
+    "evidence": "documented"
+  },
+  {
+    "id": "boards.snapping",
+    "group": "Boards",
+    "name": "Grid and snapping",
+    "acceptance_criteria": "Toggle dot grid, snap on drag, temporarily override using modifier key; preferences persist.",
+    "source": "https://eden.so/help/boards/freeform-grid-and-snapping/",
+    "dependencies": [
+      "DB"
+    ],
+    "evidence": "documented"
+  },
+  {
+    "id": "boards.multichat",
+    "group": "Boards",
+    "name": "Multiple contextual chats",
+    "acceptance_criteria": "Create separate chats adjacent to sources, selected items or entire board; source relationships persist across sessions.",
+    "source": "https://eden.so/features/boards/",
+    "dependencies": [
+      "DB",
+      "LLM"
+    ],
+    "evidence": "documented"
+  },
+  {
+    "id": "boards.sharing",
+    "group": "Collaboration",
+    "name": "Public board sharing and duplication",
+    "acceptance_criteria": "Create/revoke shareable links and allow read/comment or supported edits; recipient can duplicate accessible items into own workspace; no unshared private data travels.",
+    "source": "https://eden.so/help/boards/sharing-a-board/",
+    "dependencies": [
+      "DB",
+      "AUTH"
+    ],
+    "evidence": "documented"
+  },
+  {
+    "id": "boards.private",
+    "group": "Collaboration",
+    "name": "Team and private boards",
+    "acceptance_criteria": "Visibility modes restrict content to team or explicitly invited users; private board items do not become globally readable by changing views.",
+    "source": "https://eden.so/help/boards/team-and-private-boards/",
+    "dependencies": [
+      "DB",
+      "AUTH"
+    ],
+    "evidence": "documented"
+  },
+  {
+    "id": "items.invites",
+    "group": "Collaboration",
+    "name": "Specific-person item invitations",
+    "acceptance_criteria": "Invite by email to board/note/table, assign supported view/edit permission, revoke without workspace membership; guest invites do not consume member seat.",
+    "source": "https://eden.so/help/boards/inviting-people/",
+    "dependencies": [
+      "DB",
+      "AUTH",
+      "EMAIL"
+    ],
+    "evidence": "documented"
+  },
+  {
+    "id": "items.sharing",
+    "group": "Collaboration",
+    "name": "Share individual item",
+    "acceptance_criteria": "Share note/table/link/media independently of board; supported public view/comment/edit permission is enforced server-side; revoke is effective immediately.",
+    "source": "https://eden.so/help/boards/sharing-an-item/",
+    "dependencies": [
+      "DB",
+      "AUTH"
+    ],
+    "evidence": "documented"
+  },
+  {
+    "id": "items.comments",
+    "group": "Collaboration",
+    "name": "Threaded and anchored comments",
+    "acceptance_criteria": "Comments sit beside note/table/board, support replying/resolving/mentions where documented, require login to post, and obey share permission; summaries notify owners; comments do not enter AI context or exports.",
+    "source": "https://eden.so/help/boards/comments/",
+    "dependencies": [
+      "DB",
+      "AUTH",
+      "EMAIL",
+      "PUSH"
+    ],
+    "evidence": "documented"
+  },
+  {
+    "id": "items.history",
+    "group": "Collaboration",
+    "name": "Version history",
+    "acceptance_criteria": "List snapshots, inspect and restore versions within plan retention; restoration creates recoverable state rather than silent irreversible overwrite.",
+    "source": "https://eden.so/help/boards/version-history/",
+    "dependencies": [
+      "DB"
+    ],
+    "evidence": "documented"
+  },
+  {
+    "id": "items.trash",
+    "group": "Collaboration",
+    "name": "Trash and restore",
+    "acceptance_criteria": "Delete moves recoverable items into trash; restore retains useful context; plan-specific retention and permanent expiry are explicit.",
+    "source": "https://eden.so/help/boards/trash-and-restoring-items/",
+    "dependencies": [
+      "DB",
+      "JOBS"
+    ],
+    "evidence": "documented"
+  },
+  {
+    "id": "editor.documents",
+    "group": "Editor & tables",
+    "name": "Rich markdown documents",
+    "acceptance_criteria": "Create long-form notes with headings, paragraphs, lists and blocks; slash insert menu, @ mentions, rearrange blocks, side panes and autosave; source context remains accessible.",
+    "source": "https://eden.so/help/boards/documents-vs-tables/",
+    "dependencies": [
+      "DB"
+    ],
+    "evidence": "documented"
+  },
+  {
+    "id": "tables.schema",
+    "group": "Editor & tables",
+    "name": "Database table columns",
+    "acceptance_criteria": "Rows plus text, select, multi-select, date, checkbox, priority and workspace-item relation fields; add/rename/remove columns and options; computed created/platform/likes/views; color choices persist.",
+    "source": "https://eden.so/help/boards/tables/",
+    "dependencies": [
+      "DB"
+    ],
+    "evidence": "documented"
+  },
+  {
+    "id": "tables.items",
+    "group": "Editor & tables",
+    "name": "Rows as workspace items",
+    "acceptance_criteria": "Link existing item, create document/table from row, or add related item without renaming row; linked title follows original item; row deletion remains recoverable.",
+    "source": "https://eden.so/help/boards/tables/",
+    "dependencies": [
+      "DB"
+    ],
+    "evidence": "documented"
+  },
+  {
+    "id": "tables.layouts",
+    "group": "Editor & tables",
+    "name": "Table, list, kanban and calendar",
+    "acceptance_criteria": "Same rows switch among 4 layouts; group by status/date/etc, drag between groups to edit property, reorder lanes, date calendar drag; saved filters and views persist.",
+    "source": "https://eden.so/help/boards/tables/",
+    "dependencies": [
+      "DB"
+    ],
+    "evidence": "documented"
+  },
+  {
+    "id": "tables.bulk",
+    "group": "Editor & tables",
+    "name": "Bulk and keyboard editing",
+    "acceptance_criteria": "Enter/Tab/arrows traverse typed editors; range select supports multi-cell change, clear, copy TSV and row duplicate/remove; sorted rows disable manual reorder.",
+    "source": "https://eden.so/help/boards/tables/",
+    "dependencies": [
+      "DB"
+    ],
+    "evidence": "documented"
+  },
+  {
+    "id": "tables.recurrence",
+    "group": "Editor & tables",
+    "name": "Recurring tasks and relative date filters",
+    "acceptance_criteria": "Daily/weekday/weekly/monthly/yearly/custom recurrence; complete advances same row to next future occurrence and unchecks; optional from-completion anchor; calendar previews and undo; today/overdue filters remain relative.",
+    "source": "https://eden.so/help/boards/tables/",
+    "dependencies": [
+      "DB"
+    ],
+    "evidence": "documented"
+  },
+  {
+    "id": "tables.embed",
+    "group": "Editor & tables",
+    "name": "Live embedded tables and templates",
+    "acceptance_criteria": "Embed existing/new table in note with bidirectional editing; deleting block retains table; external duplicate copies table safely; create from reusable templates and AI.",
+    "source": "https://eden.so/help/boards/tables/",
+    "dependencies": [
+      "DB",
+      "LLM"
+    ],
+    "evidence": "documented"
+  },
+  {
+    "id": "reader.articles",
+    "group": "Reader & highlights",
+    "name": "Focused article/social reader",
+    "acceptance_criteria": "Render clean articles/newsletters and full social text with saved reading position; local browser capture may be needed for paid content user can already read.",
+    "source": "https://eden.so/features/reader/",
+    "dependencies": [
+      "DB",
+      "INGEST",
+      "EXTENSION"
+    ],
+    "evidence": "documented"
+  },
+  {
+    "id": "reader.pdf",
+    "group": "Reader & highlights",
+    "name": "PDF and EPUB reader",
+    "acceptance_criteria": "Upload/read PDF and EPUB, search/highlight, maintain figures/tables/layout for premium PDF extraction; retain original binary.",
+    "source": "https://eden.so/help/library/reading-pdfs/",
+    "dependencies": [
+      "DB",
+      "BLOB",
+      "PDF_OCR"
+    ],
+    "evidence": "documented"
+  },
+  {
+    "id": "reader.transcript",
+    "group": "Reader & highlights",
+    "name": "Video, reel and audio transcription",
+    "acceptance_criteria": "Saved YouTube/TikTok/Instagram videos and supported uploads get readable searchable transcripts tied to source; processing/error states and language handling are visible.",
+    "source": "https://eden.so/help/library/reader-for-social-and-video/",
+    "dependencies": [
+      "DB",
+      "BLOB",
+      "TRANSCRIPTION",
+      "INGEST"
+    ],
+    "evidence": "documented"
+  },
+  {
+    "id": "reader.highlights",
+    "group": "Reader & highlights",
+    "name": "First-class highlights",
+    "acceptance_criteria": "Select passage in readable formats, create highlight with source/position and note; searchable Highlights pane; add quote card to board; reopen source context.",
+    "source": "https://eden.so/help/library/highlighting-while-reading/",
+    "dependencies": [
+      "DB"
+    ],
+    "evidence": "documented"
+  },
+  {
+    "id": "reader.narration",
+    "group": "Reader & highlights",
+    "name": "Reader narration",
+    "acceptance_criteria": "Generate/play audio narration for saved reads with useful playback controls and clear availability on plan.",
+    "source": "https://eden.so/pricing/",
+    "dependencies": [
+      "DB",
+      "BLOB",
+      "TTS"
+    ],
+    "evidence": "documented"
+  },
+  {
+    "id": "reader.kindle",
+    "group": "Reader & highlights",
+    "name": "Kindle sync",
+    "acceptance_criteria": "Connect through documented authorized flow, import book highlights, track sync status, dedupe and disconnect.",
+    "source": "https://eden.so/help/library/connect-kindle/",
+    "dependencies": [
+      "DB",
+      "KINDLE",
+      "JOBS"
+    ],
+    "evidence": "documented"
+  },
+  {
+    "id": "reader.readwise",
+    "group": "Reader & highlights",
+    "name": "Readwise sync",
+    "acceptance_criteria": "Authorized Readwise connection imports highlights and source metadata; subsequent sync updates without duplicates; disconnect revokes credential.",
+    "source": "https://eden.so/help/getting-started/connect-readwise/",
+    "dependencies": [
+      "DB",
+      "READWISE",
+      "JOBS"
+    ],
+    "evidence": "documented"
+  },
+  {
+    "id": "reader.snipd",
+    "group": "Reader & highlights",
+    "name": "Snipd podcast highlights",
+    "acceptance_criteria": "Authorized connection imports podcast snips/highlights and source context with resumable sync and disconnect.",
+    "source": "https://eden.so/help/library/connect-snipd/",
+    "dependencies": [
+      "DB",
+      "SNIPD",
+      "JOBS"
+    ],
+    "evidence": "documented"
+  },
+  {
+    "id": "research.discover",
+    "group": "Research",
+    "name": "Multi-platform outlier discovery",
+    "acceptance_criteria": "Search/filter corpus by topic, platform, date, follower range, format and outlier floor; use seven named research platforms; browse/filter free vs typed paid search is entitlement-driven.",
+    "source": "https://eden.so/features/discover/",
+    "dependencies": [
+      "DB",
+      "SOCIAL_CORPUS",
+      "EMBEDDINGS"
+    ],
+    "evidence": "documented"
+  },
+  {
+    "id": "research.baseline",
+    "group": "Research",
+    "name": "Creator-relative outlier ranking",
+    "acceptance_criteria": "Outlier is post metric divided by creator recent median: likes for X/LinkedIn/Substack, views for YouTube/TikTok, separate IG content-type baselines; show sample/baseline provenance and unavailable metrics honestly.",
+    "source": "https://eden.so/features/creators/",
+    "dependencies": [
+      "DB",
+      "SOCIAL_CORPUS"
+    ],
+    "evidence": "documented"
+  },
+  {
+    "id": "research.creators",
+    "group": "Research",
+    "name": "Creator search and profiles",
+    "acceptance_criteria": "Resolve handles and linked cross-platform profiles; semantic topic search returns excerpt evidence; top outlier/liked/viewed/shared/recent sorts; track creator data refresh.",
+    "source": "https://eden.so/features/creators/",
+    "dependencies": [
+      "DB",
+      "SOCIAL_CORPUS",
+      "EMBEDDINGS"
+    ],
+    "evidence": "documented"
+  },
+  {
+    "id": "research.lists",
+    "group": "Research",
+    "name": "Creator lists and recommendations",
+    "acceptance_criteria": "Create/update lists, aggregate latest posts as refreshable feed, suggest similar creators, save standouts to boards; list differs from saved snapshot board.",
+    "source": "https://eden.so/help/creators/building-creator-lists/",
+    "dependencies": [
+      "DB",
+      "SOCIAL_CORPUS",
+      "EMBEDDINGS"
+    ],
+    "evidence": "documented"
+  },
+  {
+    "id": "research.boost",
+    "group": "Research",
+    "name": "Boost/reverse-engineer posts",
+    "acceptance_criteria": "Analyze hook/structure/angle, apply pattern to user idea, generate variation/short-form angles; retain full source context and citation in resulting chat.",
+    "source": "https://eden.so/help/chat/using-boosts/",
+    "dependencies": [
+      "DB",
+      "LLM",
+      "SOCIAL_CORPUS"
+    ],
+    "evidence": "documented"
+  },
+  {
+    "id": "research.ads",
+    "group": "Research",
+    "name": "Meta and TikTok ad discovery",
+    "acceptance_criteria": "Search ads with creative/copy/CTA/platform/niche/angle/format; sort running duration/rising; show run dates, variations and available TikTok CTR/views/likes without claiming true ROI.",
+    "source": "https://eden.so/features/ads/",
+    "dependencies": [
+      "DB",
+      "AD_CORPUS",
+      "BLOB",
+      "EMBEDDINGS"
+    ],
+    "evidence": "documented"
+  },
+  {
+    "id": "research.brands",
+    "group": "Research",
+    "name": "Brand ads and watchlists",
+    "acceptance_criteria": "Resolve brand from name/site/social/ad URL, start on-demand collection, show active/history ads, daily refresh, track in shared watchlist feed.",
+    "source": "https://eden.so/features/ads/",
+    "dependencies": [
+      "DB",
+      "AD_CORPUS",
+      "JOBS"
+    ],
+    "evidence": "documented"
+  },
+  {
+    "id": "research.advariants",
+    "group": "Research",
+    "name": "Ad variation comparison and archive",
+    "acceptance_criteria": "Group variations, compare dates/placements/copy/CTA side by side; saved permitted creatives remain available independently of live campaign; save/chat/brief from ad.",
+    "source": "https://eden.so/features/ads/",
+    "dependencies": [
+      "DB",
+      "AD_CORPUS",
+      "BLOB",
+      "LLM"
+    ],
+    "evidence": "documented"
+  },
+  {
+    "id": "chat.eve",
+    "group": "AI chat",
+    "name": "Eve multi-tool chat",
+    "acceptance_criteria": "Streaming chat can search/read/organize/write/repurpose/prepare queue in one request; tool traces visible, retriable errors concrete, progress survives background runs.",
+    "source": "https://eden.so/features/eve/",
+    "dependencies": [
+      "DB",
+      "LLM",
+      "JOBS"
+    ],
+    "evidence": "documented"
+  },
+  {
+    "id": "chat.sources",
+    "group": "AI chat",
+    "name": "Grounded board/workspace chat",
+    "acceptance_criteria": "Attach explicit board/item context, retrieve relevant owned material and return verifiable source lines; no unsupported claims that material was read.",
+    "source": "https://eden.so/help/chat/chatting-with-a-board/",
+    "dependencies": [
+      "DB",
+      "LLM",
+      "EMBEDDINGS"
+    ],
+    "evidence": "documented"
+  },
+  {
+    "id": "chat.models",
+    "group": "AI chat",
+    "name": "Model selection and custom instructions",
+    "acceptance_criteria": "Select available models/tier, persistent user instructions, clear credits/cost display, configured provider/model capabilities; unavailable provider is marked unavailable.",
+    "source": "https://eden.so/pricing/",
+    "dependencies": [
+      "DB",
+      "LLM",
+      "BILLING"
+    ],
+    "evidence": "documented"
+  },
+  {
+    "id": "chat.voice",
+    "group": "AI chat",
+    "name": "Multiple writing voices",
+    "acceptance_criteria": "Editable voice profiles derive from user-selected sources; choose writing voice globally/per chat; migration from older prompts/identities is documented.",
+    "source": "https://eden.so/help/chat/set-a-custom-ai-as-your-writing-voice/",
+    "dependencies": [
+      "DB",
+      "LLM"
+    ],
+    "evidence": "documented"
+  },
+  {
+    "id": "chat.deep_social",
+    "group": "AI chat",
+    "name": "Deep Social background research",
+    "acceptance_criteria": "Run bounded multi-query market investigation, real posts and source citations, progress and final report; no fake metrics when corpus unavailable.",
+    "source": "https://eden.so/help/chat/deep-social-research/",
+    "dependencies": [
+      "DB",
+      "LLM",
+      "SOCIAL_CORPUS",
+      "JOBS"
+    ],
+    "evidence": "documented"
+  },
+  {
+    "id": "chat.deep_synthesis",
+    "group": "AI chat",
+    "name": "Deep Synthesis",
+    "acceptance_criteria": "Search/read large owned library, connect themes with exact sources, deliver background result without cross-tenant leakage.",
+    "source": "https://eden.so/help/chat/deep-synthesis/",
+    "dependencies": [
+      "DB",
+      "LLM",
+      "EMBEDDINGS",
+      "JOBS"
+    ],
+    "evidence": "documented"
+  },
+  {
+    "id": "chat.tasks",
+    "group": "AI chat",
+    "name": "Background tasks",
+    "acceptance_criteria": "Delegate longer work from chat, preserve visible running/completed/failed status, cancel/retry where appropriate, notify user and reopen result.",
+    "source": "https://eden.so/help/chat/background-tasks/",
+    "dependencies": [
+      "DB",
+      "LLM",
+      "JOBS"
+    ],
+    "evidence": "documented"
+  },
+  {
+    "id": "chat.images",
+    "group": "AI chat",
+    "name": "Text-first image and hybrid generation",
+    "acceptance_criteria": "Generate post/quote cards, visual explainers and optional AI backgrounds; editable crisp HTML/CSS text overlay; save/refine/export and attach to draft.",
+    "source": "https://eden.so/help/chat/generating-images/",
+    "dependencies": [
+      "DB",
+      "BLOB",
+      "RENDER",
+      "IMAGE_API"
+    ],
+    "evidence": "documented"
+  },
+  {
+    "id": "chat.voice_capture",
+    "group": "AI chat",
+    "name": "Voice-to-text capture",
+    "acceptance_criteria": "Microphone capture transcribes to editable text with explicit recording state and permission flow.",
+    "source": "https://eden.so/pricing/",
+    "dependencies": [
+      "DB",
+      "TRANSCRIPTION"
+    ],
+    "evidence": "documented"
+  },
+  {
+    "id": "custom.create",
+    "group": "Custom AI",
+    "name": "Build a Custom AI",
+    "acceptance_criteria": "CRUD name/description/instructions/starters/voice, own chat history and page; attach library files, notes, live boards or public creators; answers show used sources.",
+    "source": "https://eden.so/help/custom-ai/create-your-first-custom-ai/",
+    "dependencies": [
+      "DB",
+      "LLM",
+      "EMBEDDINGS"
+    ],
+    "evidence": "documented"
+  },
+  {
+    "id": "custom.isolation",
+    "group": "Custom AI",
+    "name": "Narrow, live knowledge boundary",
+    "acceptance_criteria": "Only attached knowledge is accessible; live board/note references reflect updates; wrong source can be corrected; creator source refresh is explicit.",
+    "source": "https://eden.so/features/custom-ai/",
+    "dependencies": [
+      "DB",
+      "LLM",
+      "EMBEDDINGS",
+      "SOCIAL_CORPUS"
+    ],
+    "evidence": "documented"
+  },
+  {
+    "id": "custom.sharing",
+    "group": "Custom AI",
+    "name": "Share and install templates safely",
+    "acceptance_criteria": "Shared instructions/starters install independent copy, exclude private board/note/chat contents, replace private knowledge references with named empty slots.",
+    "source": "https://eden.so/help/custom-ai/share-and-install-custom-ais/",
+    "dependencies": [
+      "DB",
+      "AUTH"
+    ],
+    "evidence": "documented"
+  },
+  {
+    "id": "custom.marketplace",
+    "group": "Custom AI",
+    "name": "Explore marketplace",
+    "acceptance_criteria": "Search/filter categories/platforms, inspect template knowledge, install and start specialist; 19 publicly listed templates captured in report.",
+    "source": "https://eden.so/marketplace/",
+    "dependencies": [
+      "DB",
+      "LLM"
+    ],
+    "evidence": "documented"
+  },
+  {
+    "id": "custom.routines",
+    "group": "Custom AI",
+    "name": "Custom AI routines",
+    "acceptance_criteria": "Scheduled run inherits companion instruction/knowledge/voice in fresh chat; preserve source boundary and continuity through explicit notes.",
+    "source": "https://eden.so/help/custom-ai/custom-ai-routines/",
+    "dependencies": [
+      "DB",
+      "LLM",
+      "JOBS"
+    ],
+    "evidence": "documented"
+  },
+  {
+    "id": "skills.portable",
+    "group": "Skills & routines",
+    "name": "Portable SKILL.md skills",
+    "acceptance_criteria": "Create via form/chat, import markdown or ZIP references, handle duplicate names via replace/keep-both, read refs on demand and export byte-exact; scripts stored but never executed.",
+    "source": "https://eden.so/help/chat/using-skills/",
+    "dependencies": [
+      "DB",
+      "BLOB"
+    ],
+    "evidence": "documented"
+  },
+  {
+    "id": "skills.activate",
+    "group": "Skills & routines",
+    "name": "Slash and automatic skill activation",
+    "acceptance_criteria": "Slash picker or semantic trigger activates visible removable chip per chat; built-in skills toggle workspace-wide; custom skill editing and deletion persist.",
+    "source": "https://eden.so/help/chat/using-skills/",
+    "dependencies": [
+      "DB",
+      "LLM"
+    ],
+    "evidence": "documented"
+  },
+  {
+    "id": "skills.builtins",
+    "group": "Skills & routines",
+    "name": "Nine built-in skills",
+    "acceptance_criteria": "Ship Skill creator, Prompt creator, X posts, X threads, LinkedIn posts, Instagram captions, YouTube titles, Newsletter writer, Table builder as exportable read-only toggles.",
+    "source": "https://eden.so/help/chat/using-skills/",
+    "dependencies": [
+      "DB",
+      "LLM"
+    ],
+    "evidence": "documented"
+  },
+  {
+    "id": "routines.schedules",
+    "group": "Skills & routines",
+    "name": "Timezone-aware routines",
+    "acceptance_criteria": "CRUD 20/workspace max documented daily/weekday/weekly/monthly schedules with model/prompt/email; preserve original timezone; skip overlapping run; persist next run and pause status.",
+    "source": "https://eden.so/help/chat/meet-routines/",
+    "dependencies": [
+      "DB",
+      "LLM",
+      "JOBS",
+      "EMAIL"
+    ],
+    "evidence": "documented"
+  },
+  {
+    "id": "routines.history",
+    "group": "Skills & routines",
+    "name": "Routine result inbox and notifications",
+    "acceptance_criteria": "Fresh chat per run, pulsing running and blue unread completed markers, latest-week run list, clear on open; persistent note/table memory across runs; email/push result option.",
+    "source": "https://eden.so/help/chat/meet-routines/",
+    "dependencies": [
+      "DB",
+      "JOBS",
+      "EMAIL",
+      "PUSH"
+    ],
+    "evidence": "documented"
+  },
+  {
+    "id": "publish.accounts",
+    "group": "Publishing",
+    "name": "OAuth social account linking",
+    "acceptance_criteria": "Link X/LinkedIn/Threads/Instagram/TikTok/Facebook/YouTube on official auth screens, handle reconnect/revoke/errors and per-workspace/per-brand scope; IG requires professional, FB Page, YouTube Shorts only.",
+    "source": "https://eden.so/help/scheduling/connecting-your-accounts/",
+    "dependencies": [
+      "DB",
+      "AUTH",
+      "SOCIAL_PUBLISH"
+    ],
+    "evidence": "documented"
+  },
+  {
+    "id": "publish.composer",
+    "group": "Publishing",
+    "name": "Multi-platform composer and drafts",
+    "acceptance_criteria": "Store draft/master plus per-platform versions, threads, images/video/doc media, platform validation and previews; drafts never publish until explicitly scheduled/published.",
+    "source": "https://eden.so/help/scheduling/scheduling-and-publishing/",
+    "dependencies": [
+      "DB",
+      "BLOB",
+      "SOCIAL_PUBLISH"
+    ],
+    "evidence": "documented"
+  },
+  {
+    "id": "publish.calendar",
+    "group": "Publishing",
+    "name": "Queue/calendar/custom schedules",
+    "acceptance_criteria": "Queue into slots or explicit timezone time; best-time suggestions if supported by evidence; edit, move, cancel, reuse past post and status tracking until published.",
+    "source": "https://eden.so/features/scheduling/",
+    "dependencies": [
+      "DB",
+      "JOBS",
+      "SOCIAL_PUBLISH"
+    ],
+    "evidence": "documented"
+  },
+  {
+    "id": "publish.delivery",
+    "group": "Publishing",
+    "name": "Durable scheduled delivery",
+    "acceptance_criteria": "Worker publishes due posts with per-platform results, retry/idempotency, failure reasons, connection expiry state and cancellation races handled; saved scheduled status must reflect actual provider result.",
+    "source": "https://eden.so/help/scheduling/troubleshooting-scheduling/",
+    "dependencies": [
+      "DB",
+      "JOBS",
+      "SOCIAL_PUBLISH"
+    ],
+    "evidence": "documented"
+  },
+  {
+    "id": "publish.automations",
+    "group": "Publishing",
+    "name": "First comment and repost automation",
+    "acceptance_criteria": "After successful post, schedule first comment and supported X auto-retweet/repost/quote actions with explicit user configuration and result tracking.",
+    "source": "https://eden.so/help/scheduling/x-scheduling/",
+    "dependencies": [
+      "DB",
+      "JOBS",
+      "SOCIAL_PUBLISH"
+    ],
+    "evidence": "documented"
+  },
+  {
+    "id": "publish.substack",
+    "group": "Publishing",
+    "name": "Substack local-device bridge",
+    "acceptance_criteria": "Text notes/articles hand off to Substack native scheduler via signed-in extension/desktop; mark On Substack only after confirmation; image/thread note requires live browser; missed is warning/draft, never stale publish; custom domain permission.",
+    "source": "https://eden.so/help/scheduling/substack-scheduling/",
+    "dependencies": [
+      "DB",
+      "EXTENSION",
+      "SUBSTACK_LOCAL",
+      "JOBS"
+    ],
+    "evidence": "documented"
+  },
+  {
+    "id": "publish.post_images",
+    "group": "Publishing",
+    "name": "Post image renderer",
+    "acceptance_criteria": "Convert text to native-looking post image, select styling/aspect and identity, preview/export/attach; preserve per-platform attachments.",
+    "source": "https://eden.so/help/scheduling/post-images/",
+    "dependencies": [
+      "DB",
+      "BLOB",
+      "RENDER"
+    ],
+    "evidence": "documented"
+  },
+  {
+    "id": "analytics.digest",
+    "group": "Analytics",
+    "name": "Own cross-platform analytics",
+    "acceptance_criteria": "Connected private metrics sync into warehouse; totals/deltas/follower counts, per-post views/likes/shares/saves/impressions/watch time/email opens when source supports; missing is syncing/unavailable, never zero.",
+    "source": "https://eden.so/features/mcp/",
+    "dependencies": [
+      "DB",
+      "SOCIAL_ANALYTICS",
+      "JOBS"
+    ],
+    "evidence": "documented"
+  },
+  {
+    "id": "analytics.insights",
+    "group": "Analytics",
+    "name": "Topic/format winners and baseline comparisons",
+    "acceptance_criteria": "Filters by brand/platform/window, recent top posts and own baseline, compare periods, track 30/60/90-day plan history; separate own performance from market evidence.",
+    "source": "https://eden.so/features/mcp/",
+    "dependencies": [
+      "DB",
+      "SOCIAL_ANALYTICS",
+      "LLM"
+    ],
+    "evidence": "documented"
+  },
+  {
+    "id": "dm.rules",
+    "group": "Auto-DM & links",
+    "name": "Instagram automation rules",
+    "acceptance_criteria": "Trigger by comment keyword, story reply, incoming DM keyword or reaction/optional emoji; target single/next/new posts; message editor and preview; separate public reply action.",
+    "source": "https://eden.so/features/auto-dm/",
+    "dependencies": [
+      "DB",
+      "INSTAGRAM_MESSAGING",
+      "JOBS"
+    ],
+    "evidence": "documented"
+  },
+  {
+    "id": "dm.delivery",
+    "group": "Auto-DM & links",
+    "name": "Webhook automation delivery",
+    "acceptance_criteria": "Consume authenticated webhooks, dedupe same rule/person for 7 days, delay and respect hourly/daily platform limits, pause at zero credits and resume; count only successful actual sends.",
+    "source": "https://eden.so/features/auto-dm/",
+    "dependencies": [
+      "DB",
+      "INSTAGRAM_MESSAGING",
+      "JOBS",
+      "BILLING"
+    ],
+    "evidence": "documented"
+  },
+  {
+    "id": "dm.links",
+    "group": "Auto-DM & links",
+    "name": "Tracked short links",
+    "acceptance_criteria": "Create branded short slug, redirect to editable destination, aggregate sends/clicks/CTR without exposing recipients; change destination preserves old link.",
+    "source": "https://eden.so/features/auto-dm/",
+    "dependencies": [
+      "DB",
+      "SHORTLINK_DOMAIN"
+    ],
+    "evidence": "documented"
+  },
+  {
+    "id": "dm.domain",
+    "group": "Auto-DM & links",
+    "name": "Custom link domain",
+    "acceptance_criteria": "Verify owned domain and DNS, TLS/redirect serving, validation/errors and revoke; include default shared domain and slug collisions.",
+    "source": "https://eden.so/help/scheduling/custom-link-domain/",
+    "dependencies": [
+      "DB",
+      "SHORTLINK_DOMAIN",
+      "DNS_TLS"
+    ],
+    "evidence": "documented"
+  },
+  {
+    "id": "connectors.catalog",
+    "group": "Connectors & MCP",
+    "name": "Business app connector catalog",
+    "acceptance_criteria": "Workspace-scoped Kit, beehiiv, Klaviyo, Stripe, Whop, Kajabi, Notion, Webflow and Circle; OAuth/API-key configuration, encrypted storage, pause/delete and per-tool disable.",
+    "source": "https://eden.so/features/connectors/",
+    "dependencies": [
+      "DB",
+      "KEYVAULT",
+      "BUSINESS_APIS"
+    ],
+    "evidence": "documented"
+  },
+  {
+    "id": "connectors.actions",
+    "group": "Connectors & MCP",
+    "name": "Business reads and mutations",
+    "acceptance_criteria": "Read subscriber/revenue/member/page data, create broadcasts/products/posts, update CMS/pages according to each provider permissions; tool traces and content review for consequential actions.",
+    "source": "https://eden.so/help/chat/connected-tools/",
+    "dependencies": [
+      "DB",
+      "LLM",
+      "BUSINESS_APIS"
+    ],
+    "evidence": "documented"
+  },
+  {
+    "id": "connectors.custom",
+    "group": "Connectors & MCP",
+    "name": "Custom hosted MCP and Zapier",
+    "acceptance_criteria": "Connect remote HTTPS MCP URL with API key/OAuth, discover tools lazily, per-tool enable, enforce SSRF boundaries and treat external results as data; stdio-only servers unsupported.",
+    "source": "https://eden.so/features/connectors/",
+    "dependencies": [
+      "DB",
+      "KEYVAULT",
+      "MCP_CLIENT"
+    ],
+    "evidence": "documented"
+  },
+  {
+    "id": "mcp.server",
+    "group": "Connectors & MCP",
+    "name": "Public MCP server and OAuth",
+    "acceptance_criteria": "Streamable HTTP MCP endpoint, OAuth protected resource/authorization metadata, read/write scopes, workspace default/override and structured {ok:false,status,message} failures; expose permission-safe tool catalog.",
+    "source": "https://eden.so/openapi.json",
+    "dependencies": [
+      "DB",
+      "AUTH",
+      "MCP_SERVER"
+    ],
+    "evidence": "documented"
+  },
+  {
+    "id": "mcp.tools",
+    "group": "Connectors & MCP",
+    "name": "74 publicly catalogued MCP tools",
+    "acceptance_criteria": "Implement real workspace/research/boards/tables/scheduling/media/analytics/Custom AI/skills operations; published aliases work or deprecate explicitly; tool inputs discoverable at runtime.",
+    "source": "https://eden.so/llms-full.txt",
+    "dependencies": [
+      "DB",
+      "MCP_SERVER"
+    ],
+    "evidence": "documented"
+  },
+  {
+    "id": "workflow.weekly",
+    "group": "Five workflows",
+    "name": "Weekly Strategist",
+    "acceptance_criteria": "Save settings once; score own posts separately; bounded market investigation; up to 3 patterns each supported by different creators; grade previous bet, exactly 3 plays and one bet; save dated memo with receipts.",
+    "source": "https://eden.so/workflows/weekly-strategist/",
+    "dependencies": [
+      "DB",
+      "LLM",
+      "SOCIAL_CORPUS",
+      "SOCIAL_ANALYTICS"
+    ],
+    "evidence": "documented"
+  },
+  {
+    "id": "workflow.head",
+    "group": "Five workflows",
+    "name": "Head of Content",
+    "acceptance_criteria": "Review prior plan/actual queue and metrics, reuse recent weekly memo, evidence for each slot and at most one experiment; approve slate, draft up to 7 in voice into queue, save week report and change log.",
+    "source": "https://eden.so/workflows/head-of-content/",
+    "dependencies": [
+      "DB",
+      "LLM",
+      "SOCIAL_CORPUS",
+      "SOCIAL_ANALYTICS"
+    ],
+    "evidence": "documented"
+  },
+  {
+    "id": "workflow.command",
+    "group": "Five workflows",
+    "name": "Content Command Center",
+    "acceptance_criteria": "Connect own analytics, show real top posts, Analyst/Scout/Strategist/Planner/Repurposer stations, saved settings/snapshot, refresh and optional Telegram digest; missing metrics say syncing.",
+    "source": "https://eden.so/workflows/content-command-center/",
+    "dependencies": [
+      "DB",
+      "LLM",
+      "SOCIAL_CORPUS",
+      "SOCIAL_ANALYTICS",
+      "JOBS",
+      "TELEGRAM"
+    ],
+    "evidence": "documented"
+  },
+  {
+    "id": "workflow.brand",
+    "group": "Five workflows",
+    "name": "Personal Brand Strategist",
+    "acceptance_criteria": "Interview/refresh answers, research personal-sized creators, curate 8\u201316 real receipt posts, positioning/story/topic tree/content directions/first five hooks/monetization, save strategy and optional approved queue drafts.",
+    "source": "https://eden.so/workflows/personal-brand-strategist/",
+    "dependencies": [
+      "DB",
+      "LLM",
+      "SOCIAL_CORPUS"
+    ],
+    "evidence": "documented"
+  },
+  {
+    "id": "workflow.idea",
+    "group": "Five workflows",
+    "name": "Idea Engine",
+    "acceptance_criteria": "Fuse own saved material, live market and tangent formats; each idea has at least two legs; 5\u20138 cards or honest fewer; dedupe last 3 runs and queued/published; hooks in voice, evidence and approved draft action.",
+    "source": "https://eden.so/workflows/idea-engine/",
+    "dependencies": [
+      "DB",
+      "LLM",
+      "SOCIAL_CORPUS"
+    ],
+    "evidence": "documented"
+  },
+  {
+    "id": "extension.capture",
+    "group": "Clients",
+    "name": "Chrome extension capture and creator sidebar",
+    "acceptance_criteria": "Toolbar/right-click saves, inline buttons on X/YouTube/Instagram/Substack, chosen board/workspace, local token auth and creator sidebar; LinkedIn toolbar/profile flow.",
+    "source": "https://eden.so/features/chrome-extension/",
+    "dependencies": [
+      "DB",
+      "AUTH",
+      "EXTENSION",
+      "SOCIAL_CORPUS"
+    ],
+    "evidence": "documented"
+  },
+  {
+    "id": "clients.mobile",
+    "group": "Clients",
+    "name": "Responsive web and device continuation",
+    "acceptance_criteria": "Web works on mobile; native iOS TestFlight/Android APK/macOS exist publicly, but user requested web app; cross-device reading/chat continuation should work if native apps later built.",
+    "source": "https://eden.so/downloads/",
+    "dependencies": [
+      "DB",
+      "AUTH"
+    ],
+    "evidence": "documented; native clients outside requested web artifact"
+  },
+  {
+    "id": "billing.plans",
+    "group": "Account & billing",
+    "name": "Plans, quotas and subscription lifecycle",
+    "acceptance_criteria": "Free/Personal/Personal Plus/Starter/Pro/Studio tiers; quotas on storage/upload/credits/history/tracking/brands/seats, accurate upgrades/downgrades/cancel/pause and retained data.",
+    "source": "https://eden.so/help/account/plans-and-pricing/",
+    "dependencies": [
+      "DB",
+      "BILLING"
+    ],
+    "evidence": "documented"
+  },
+  {
+    "id": "billing.credits",
+    "group": "Account & billing",
+    "name": "Credit ledger and usage",
+    "acceptance_criteria": "Free one-time grant, paid monthly refill, metered LLM/research/tool actions, retry-safe debit/refund and concurrent reservations; transparent history; out-of-credits is actionable and does not fabricate success.",
+    "source": "https://eden.so/help/account/how-credits-work/",
+    "dependencies": [
+      "DB",
+      "BILLING"
+    ],
+    "evidence": "documented"
+  },
+  {
+    "id": "billing.invoices",
+    "group": "Account & billing",
+    "name": "Invoices and tax details",
+    "acceptance_criteria": "Download paid invoice/receipt, company billing name and VAT/tax ID, plan ownership and safe payment portal.",
+    "source": "https://eden.so/help/account/invoices-and-receipts/",
+    "dependencies": [
+      "DB",
+      "BILLING"
+    ],
+    "evidence": "documented"
+  },
+  {
+    "id": "tools.free",
+    "group": "Public tools",
+    "name": "Seven free creator tools",
+    "acceptance_criteria": "YouTube/Instagram/TikTok transcript tools, X character counter, engagement rate calculator, post image generator and YouTube app-link generator; genuine inputs/outputs and provenance.",
+    "source": "https://eden.so/tools/",
+    "dependencies": [
+      "DB",
+      "TRANSCRIPTION",
+      "INGEST",
+      "RENDER"
+    ],
+    "evidence": "documented"
+  }
+]

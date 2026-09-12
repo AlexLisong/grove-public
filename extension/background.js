@@ -1,0 +1,5 @@
+import {api,captureTab} from './shared.js';
+chrome.runtime.onInstalled.addListener(()=>{chrome.contextMenus.create({id:'grove-save',title:'Save to Grove',contexts:['page','selection','link']});});
+async function save(tab,selection,linkUrl){try{const page=await captureTab(tab.id,selection);await api('/entities',{kind:'item',title:linkUrl||page.title,content:page.selection||page.content,data:{type:page.selection?'highlight':'link',url:linkUrl||page.url,source:'Grove Capture'},tags:[]});await chrome.action.setBadgeText({tabId:tab.id,text:'✓'});await chrome.action.setBadgeBackgroundColor({tabId:tab.id,color:'#6da980'});}catch(error){await chrome.action.setBadgeText({tabId:tab.id,text:'!'});await chrome.storage.local.set({lastCaptureError:error.message});}}
+chrome.contextMenus.onClicked.addListener((info,tab)=>{if(info.menuItemId==='grove-save'&&tab?.id)void save(tab,info.selectionText,info.linkUrl);});
+chrome.commands.onCommand.addListener(async command=>{if(command==='capture-page'){const [tab]=await chrome.tabs.query({active:true,currentWindow:true});if(tab?.id)await save(tab);}});
